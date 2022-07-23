@@ -1,0 +1,51 @@
+version: '3.8'
+
+networks:
+  center-stroy:
+    driver: bridge
+
+services:
+  frontend:
+    restart: always
+    build:  
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: frontend
+    depends_on:
+      - api
+    volumes:
+      - ./frontend/nginx:/etc/nginx/conf.d
+    ports:
+      - 80:80
+    networks:
+      - center-stroy
+
+  api:
+    build:
+      context: ./TsentrstroyAPI
+      dockerfile: Dockerfile
+    container_name: api
+    ports:
+      - "8000:80"
+    networks:
+      - center-stroy
+    restart: always
+    depends_on:
+      - "postgres"
+
+  postgres:
+    image: postgres:latest
+    container_name: postgres
+    environment:
+      POSTGRES_DB: "TsentrstroyDatabase"
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "toor"
+      PGDATA: "/var/lib/postgresql/data/pgdata"
+    volumes:
+      - ./dbscripts/seed.sql:/docker-entrypoint-initdb.d/seed.sql
+      - .:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    restart: always
+    networks:
+      - center-stroy
