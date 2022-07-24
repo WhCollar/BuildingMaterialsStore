@@ -1304,3 +1304,16 @@ pgdata/pg_stat/global.stat
 pgdata/pg_subtrans/0000
 pgdata/pg_wal/000000010000000000000001
 pgdata/pg_xact/0000
+pgdata/postmaster.pid
+pgdata/pg_stat_tmp/db_0.stat
+pgdata/pg_stat_tmp/db_13757.stat
+pgdata/pg_stat_tmp/db_16384.stat
+pgdata/pg_stat_tmp/global.stat
+pgdata/pg_stat_tmp/db_0.stat
+pgdata/pg_stat_tmp/db_13757.stat
+pgdata/pg_stat_tmp/db_16384.stat
+pgdata/pg_stat_tmp/global.stat
+pgdata/pg_stat_tmp/db_0.stat
+pgdata/pg_stat_tmp/db_13757.stat
+pgdata/pg_stat_tmp/db_16384.stat
+pgdata/pg_stat_tmp/global.stat
