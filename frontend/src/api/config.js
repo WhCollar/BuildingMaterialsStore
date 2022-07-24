@@ -1,5 +1,5 @@
 const apiConfig = {
-    host: 'http://localhost/api/'
+    host: 'http://localhost:3000/api/'
 }
 
 export default apiConfig    

@@ -8,11 +8,11 @@ namespace TsentrstroyAPI.Model
         public string GetContent(OrderMessageContent orderMessageContent)
         {
             StringBuilder stringBuilder = new StringBuilder();
-            string html = System.IO.File.ReadAllText(@"./Model/MessageToCustomerContentTemplates/Message.html");
+            string html = System.IO.File.ReadAllText(@"./wwwroot/MessageToCustomerContentTemplates/Message.html");
             
             for (int i = 0; i < orderMessageContent.OrderPositions.Count; i++)
             {
-                string orderPositionTemplate = System.IO.File.ReadAllText(@"./Model/MessageToCustomerContentTemplates/OrderPositionTemplate.html");
+                string orderPositionTemplate = System.IO.File.ReadAllText(@"./wwwroot//MessageToCustomerContentTemplates/OrderPositionTemplate.html");
                 
                 orderPositionTemplate = orderPositionTemplate.Replace("#NAME#", $"{orderMessageContent.OrderPositions[i].Title}");
                 orderPositionTemplate = orderPositionTemplate.Replace("#ID#", (i + 1).ToString());

@@ -1,0 +1,3 @@
+root@Monserka:~# iptables -P OUTPUT ACCEPT
+root@Monserka:~# iptables -A FORWARD -i centerstroy -o eth0 -j ACCEPT
+root@Monserka:~# iptables -A FORWARD -i docker0 -o eth0 -j ACCEPT

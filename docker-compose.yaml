@@ -1,8 +1,9 @@
 version: '3.8'
 
 networks:
-  center-stroy:
+  centerstroy:
     driver: bridge
+    name: centerstroy
 
 services:
   frontend:
@@ -16,22 +17,24 @@ services:
     volumes:
       - ./frontend/nginx:/etc/nginx/conf.d
     ports:
-      - 80:80
+      - 3000:80
     networks:
-      - center-stroy
+      - centerstroy
 
   api:
     build:
       context: ./TsentrstroyAPI
       dockerfile: Dockerfile
     container_name: api
+    volumes:
+      - ./TsentrstroyAPI/TsentrstroyAPI/wwwroot:/app/wwwroot
     ports:
       - "8000:80"
-    networks:
-      - center-stroy
     restart: always
     depends_on:
       - "postgres"
+    networks:
+      - centerstroy
 
   postgres:
     image: postgres:latest
@@ -48,4 +51,4 @@ services:
       - "5432:5432"
     restart: always
     networks:
-      - center-stroy
+      - centerstroy
