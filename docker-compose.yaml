@@ -5,10 +5,6 @@ networks:
     driver: bridge
     name: centerstroy
 
-volumes:
-  certbotAutorization:
-  etc-letsencript:
-
 services:
   certbot:
     image: certbot/certbot
@@ -16,9 +12,9 @@ services:
       - frontend
     container_name: certbot
     volumes:
-      - etc-letsencript:/etc/letsencript
-      - certbotAutorization:/var/www/html
-    command: certonly --webroot --webroot-path=/var/www/html --email monserka@gmail.com --agree-tos --no-eff-email -d tsenterstroy72.store
+      - ./data/certbot/conf:/etc/letsencrypt
+      - ./data/certbot/www:/var/www/certbot
+    command: certonly --webroot --webroot-path=/var/www/certbot --email monserka@gmail.com --agree-tos --no-eff-email -d tsenterstroy72.store
 
   frontend:
     restart: always
@@ -30,8 +26,8 @@ services:
       - api
     volumes:
       - ./frontend/nginx:/etc/nginx/conf.d
-      - etc-letsencript:/etc/letsencript
-      - certbotAutorization:/var/www/html
+      - ./data/certbot/conf:/etc/letsencrypt
+      - ./data/certbot/www:/var/www/certbot
     ports:
       - 80:80
     networks:
