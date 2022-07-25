@@ -40,7 +40,7 @@ export default {
     <MenuItem v-if="!this.isAdminPage" />
 
     <div :class="{ 'mt-5 pt-4': !this.isAdminPage }">
-      <router-view></router-view>
+      <router-view> </router-view>
     </div>
 
     <FooterItem v-if="!this.isAdminPage" />
