@@ -14,7 +14,7 @@ services:
     volumes:
       - ./frontend/nginx/letsencript:/etc/letsencript
       - ./frontend/dist:/var/www/html
-    command: centronly --webroot --webroot-path=/var/www/html --email monserka@gmail.com --aree-tos --no-eff-email -d tsenterstroy72.store -d www.tsenterstroy72.store
+    command: centronly --webroot --webroot-path=/var/www/html --email monserka@gmail.com --aree-tos --no-eff-email -d tsenterstroy72.store
 
   frontend:
     restart: always
@@ -26,6 +26,7 @@ services:
       - api
     volumes:
       - ./frontend/nginx:/etc/nginx/conf.d
+      - ./frontend/nginx/letsencript:/etc/letsencript
     ports:
       - 80:80
     networks:
