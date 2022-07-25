@@ -1,6 +1,1 @@
-pgdata/
-pgdata/postmaster.pid
-pgdata/pg_stat_tmp/db_0.stat
-pgdata/pg_stat_tmp/db_13757.stat
-pgdata/pg_stat_tmp/db_16384.stat
-pgdata/pg_stat_tmp/global.stat
+pgdata
