@@ -17,7 +17,7 @@ services:
     volumes:
       - ./frontend/nginx:/etc/nginx/conf.d
     ports:
-      - 3000:80
+      - 80:80
     networks:
       - centerstroy
 
@@ -48,7 +48,7 @@ services:
       - ./dbscripts/seed.sql:/docker-entrypoint-initdb.d/seed.sql
       - .:/var/lib/postgresql/data
     ports:
-      - "5001:5432"
+      - "5432:5432"
     restart: always
     networks:
       - centerstroy
