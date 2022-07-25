@@ -48,7 +48,7 @@ services:
       - ./dbscripts/seed.sql:/docker-entrypoint-initdb.d/seed.sql
       - .:/var/lib/postgresql/data
     ports:
-      - "5432:5432"
+      - "5001:5432"
     restart: always
     networks:
       - centerstroy
