@@ -62,10 +62,6 @@ export default {
       this.SET_ORDER_DATA(this.orderData);
       this.UPDATE_ORDER_DATA_IN_SESSION_STAGE();
     },
-    success_send() {
-      notificationSevices.showNotification("Заявка успешно отправлена");
-      this.$router.push({ name: "Home" });
-    },
     sendOrderToServer() {
       if (
         this.orderData.firstName == "" ||
@@ -87,14 +83,18 @@ export default {
           "Заполните обязательные поля"
         );
       } else {
-        console.log("POST")
-        console.log(this.PRODUCTS_IN_CART)
+        console.log("POST");
+        console.log(this.PRODUCTS_IN_CART);
         axios
           .post(apiConfig.host + "AcceptOrder", {
             detailsOfPayment: this.GET_ORDER_DATA,
             orderPositions: this.PRODUCTS_IN_CART,
           })
-          .then((response) => this.success_send())
+          .then((response) => {
+            notificationSevices.showNotification("Заявка успешно отправлена.");
+            notificationSevices.showNotification("Проверьте папку спам в указанной почте!");
+            this.$router.push({ name: "Home" });
+          })
           .catch(function (error) {
             notificationSevices.showNotification(error.message);
           });

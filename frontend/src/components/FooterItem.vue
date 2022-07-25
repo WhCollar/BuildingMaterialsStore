@@ -121,7 +121,7 @@ export default {
     <!-- Copyright -->
     <div class="text-center p-1" style="background-color: rgba(0, 0, 0, 0.05)">
       © {{ new Date().getFullYear() }} Created by:
-      <a class="text-reset fw-bold" href="">Vladislav Zadvornyi</a>
+      <a class="text-reset fw-bold" href="">SnailBee</a>
     </div>
     <!-- Copyright -->
   </footer>
