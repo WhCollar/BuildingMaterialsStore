@@ -7,6 +7,7 @@ networks:
 
 volumes:
   certbotAutorization:
+  etc-letsencript:
 
 services:
   certbot:
@@ -15,7 +16,7 @@ services:
       - frontend
     container_name: certbot
     volumes:
-      - ./frontend/nginx/letsencript:/etc/letsencript
+      - etc-letsencript:/etc/letsencript
       - certbotAutorization:/var/www/html
     command: certonly --webroot --webroot-path=/var/www/html --email monserka@gmail.com --agree-tos --no-eff-email -d tsenterstroy72.store
 
@@ -29,7 +30,7 @@ services:
       - api
     volumes:
       - ./frontend/nginx:/etc/nginx/conf.d
-      - ./frontend/nginx/letsencript:/etc/letsencript
+      - etc-letsencript:/etc/letsencript
       - certbotAutorization:/var/www/html
     ports:
       - 80:80
