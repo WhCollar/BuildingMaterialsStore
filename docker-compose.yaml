@@ -14,7 +14,7 @@ services:
     volumes:
       - ./data/certbot/conf:/etc/letsencrypt
       - ./data/certbot/www:/var/www/certbot
-    command: certonly --webroot --webroot-path=/var/www/certbot --email monserka@gmail.com --agree-tos --no-eff-email -d tsenterstroy72.store
+    command: certonly --webroot --webroot-path=/var/www/certbot --email monserka@gmail.com --agree-tos --no-eff-email -d cstroy72.ru
 
   frontend:
     restart: always

@@ -1,5 +1,5 @@
 const apiConfig = {
-    host: 'https://tsenterstroy72.store/api/'
+    host: 'https://cstroy72.ru/api/'
 }
 
 export default apiConfig    
