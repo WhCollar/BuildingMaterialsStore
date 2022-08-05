@@ -92,7 +92,7 @@ namespace TsentrstroyAPI
             
             app.UseCors(builder =>
             {
-                builder.WithOrigins("http://tsenterstroy72.store", "http://www.tsenterstroy72.store");
+                builder.WithOrigins("http://cstroy72.ru", "http://www.cstroy72.ru");
                 builder.AllowAnyHeader();
                 builder.AllowAnyMethod();
             });
