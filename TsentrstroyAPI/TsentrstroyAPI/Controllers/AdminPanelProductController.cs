@@ -98,12 +98,15 @@ namespace TsentrstroyAPI.Controllers
         public async Task<IActionResult> UpdateProduct([FromQuery] int id)
         {
             IFormCollection collection = HttpContext.Request.Form;
-
+            
             IFormFile image = HttpContext.GetFile("image");
             Product sourceProduct = await _databaseContext.Products.FirstAsync(p => p.Id == id);
             Product product = JsonConvert.DeserializeObject<Product>(collection["product"].ToString());
 
-            UpdateProductValue(sourceProduct, product, collection);
+            _databaseContext.Entry(sourceProduct).State = EntityState.Detached;
+
+            UpdateProductValue(ref sourceProduct, product, collection);
+            
             if (sourceProduct.SubCategory is null == true)
                 return BadRequest("Товар не изменён. Не удалось найти подкатегорию");
             
@@ -117,8 +120,8 @@ namespace TsentrstroyAPI.Controllers
             
             return Ok();
         }
-        
-        private void UpdateProductValue(Product sourceProduct, Product product, IFormCollection collection)
+
+        private void UpdateProductValue(ref Product sourceProduct, Product product, IFormCollection collection)
         {
             sourceProduct = _mapper.Map<Product>(product);
             sourceProduct.SubCategory = GetSubCategory(collection);
